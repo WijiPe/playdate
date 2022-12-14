@@ -6,7 +6,7 @@ PASSWORD_REGEX1 = re.compile (r'^.*[A-Z].*[0-9].*|.*[0-9].*[A-Z].*')
 
 DB = "playdate"
 
-class Users:
+class User:
     def __init__( self , data ):
         self.id = data['id']
         self.first_name = data['first_name']
