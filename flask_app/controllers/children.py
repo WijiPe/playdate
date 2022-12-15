@@ -25,6 +25,8 @@ def add_child():
     #     Child.add_child(data)
         # return {'status': 'success'}
     data = {
+        # 'user_id': session['id'],
+        "user_id" : request.form['user_id'],
         "first_name" : request.form['first_name'],
         "last_name" : request.form['last_name'],
         "date_of_birth" : request.form['date_of_birth'],
@@ -33,11 +35,17 @@ def add_child():
         "medicine" : request.form['medicine'],
         "favourite_thing" : request.form['favourite_thing'],
         "additional_information" : request.form['additional_information'],
-        "user_id" : request.form['user_id'],
-        
         }
     Child.add_child(data)
     return {'status': 'success'}
 
-
-    
+@app.route("/child/<int:child_id>")
+def show_child(child_id):
+    # if 'id' not in session:
+    #     return {'status': 'success'}
+    data = {
+        "child_id":child_id,
+        "id": session['id']
+    }
+    child = Child.get_child_by_user_and_childId(data)
+    return {'status': 'success'}

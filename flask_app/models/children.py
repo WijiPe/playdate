@@ -25,6 +25,33 @@ class Child:
         """
         results = connectToMySQL(DB).query_db(query,data)
         return results
+    
+    @classmethod
+    def get_child_by_user_and_childId(cls,data):
+        query = "SELECT * FROM children WHERE user_id = %(id)s AND children.id = %(child_id)s;"
+        results = connectToMySQL(DB).query_db(query,data)
+        if results:
+            one_child = cls(results[0])
+            print('dic',results[0])
+            print('object',results[0])
+            return one_child
+        
+        # children = cls(results[0])
+
+        # for row_from_db in results:
+        #     user_data = {
+        #         "id" : row_from_db["users.id"],
+        #         "first_name" : row_from_db["first_name"],
+        #         "last_name" : row_from_db["last_name"],
+        #         "email" : row_from_db["email"],
+        #         "phone_number" :data['phone_number'],
+        #         "location" :data['location'],
+        #         "password" : row_from_db["password"],
+        #         "created_at" : row_from_db["users.created_at"],
+        #         "updated_at" : row_from_db["users.updated_at"]
+        #     }
+        #     children.users.append(User(user_data))
+        # return children
 
     # @classmethod
     # def get_cars_show_owner(cls):
