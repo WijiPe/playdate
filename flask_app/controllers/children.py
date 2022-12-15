@@ -7,11 +7,11 @@ from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
 
-# @app.route("/to_add")
-# def to_add_child():
-#     if 'id' not in session:
-#         return {'status': 'fail', 'reason': 'invalid'},400
-#     return {'status': 'success'}
+@app.route("/to_add_child")
+def to_add_child():
+    if 'id' not in session:
+        return {'status': 'fail', 'reason': 'invalid'},400
+    return {'status': 'success'}
 
 @app.post('/add_child')
 def add_child():
