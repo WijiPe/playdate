@@ -49,3 +49,14 @@ def show_child(child_id):
     }
     child = Child.get_child_by_user_and_childId(data)
     return {'status': 'success'}
+
+# @app.route("/child/<int:child_id>")
+# def show_children(child_id):
+#     # if 'id' not in session:
+#     #     return {'status': 'success'}
+#     data = {
+#         "child_id":child_id,
+#         "id": session['id']
+#     }
+#     child = Child.get_child_by_user_and_childId(data)
+#     return {'status': 'success'}

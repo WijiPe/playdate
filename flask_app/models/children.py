@@ -35,6 +35,16 @@ class Child:
             print('dic',results[0])
             print('object',results[0])
             return one_child
+
+    @classmethod
+    def get_children_by_userId(cls,data):
+        query = "SELECT * FROM children WHERE user_id = %(id)s;"
+        results = connectToMySQL(DB).query_db(query,data)
+        if results:
+            all_children = cls(results[0])
+            print('dic',results[0])
+            print('object',results[0])
+            return all_children
         
         # children = cls(results[0])
 
