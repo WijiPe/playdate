@@ -63,12 +63,12 @@ class Child:
         #     children.users.append(User(user_data))
         # return children
 
-    # @classmethod
-    # def get_cars_show_owner(cls):
-    #     query = "SELECT * FROM cars JOIN users ON users.id = cars.user_id;"
-    #     results = connectToMySQL(DB).query_db(query)
-    #     print(results)
-    #     car = []
-    #     for result in results:
-    #         car.append(cls(result))
-    #     return car
+    @classmethod
+    def get_one_child_by_id(cls,data):
+        query = "SELECT * FROM children WHERE id = %(id)s;"
+        results = connectToMySQL(DB).query_db(query,data)
+        if results:
+            one_child = cls(results[0])
+            print('dic',results[0])
+            print('object',results[0])
+            return one_child

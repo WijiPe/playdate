@@ -39,10 +39,10 @@ def add_child():
     Child.add_child(data)
     return {'status': 'success'}
 
-@app.route("/child/<int:child_id>")
-def show_child(child_id):
+@app.route("/childbyuser/<int:child_id>")
+def show_childbyuser(child_id):
     # if 'id' not in session:
-    #     return {'status': 'success'}
+    #     return {'status': 'fail', 'reason': 'invalid'},400
     data = {
         "child_id":child_id,
         "id": session['id']
@@ -50,13 +50,14 @@ def show_child(child_id):
     child = Child.get_child_by_user_and_childId(data)
     return {'status': 'success'}
 
-# @app.route("/child/<int:child_id>")
-# def show_children(child_id):
-#     # if 'id' not in session:
-#     #     return {'status': 'success'}
-#     data = {
-#         "child_id":child_id,
-#         "id": session['id']
-#     }
-#     child = Child.get_child_by_user_and_childId(data)
-#     return {'status': 'success'}
+@app.route("/child/<int:id>")
+def show_child(id):
+    # if 'id' not in session:
+    #     return {'status': 'fail', 'reason': 'invalid'},400
+    data = {
+        "id":id,
+        # "id": session['id']
+    }
+    child = Child.get_one_child_by_id(data)
+    return {'status': 'success'}
+

@@ -30,7 +30,7 @@ def add_friend(id):
 @app.route("/get_child_friends/<int:child_id>")
 def show_child_friends(child_id):
     # if 'id' not in session:
-    #     return {'status': 'success'}
+    #     return {'status': 'fail', 'reason': 'invalid'},400
     data = {
         "id":child_id,
         # "id": session['id']

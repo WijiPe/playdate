@@ -28,4 +28,6 @@ class Friend:
             print('dic',results[0])
             print('object',results[0])
             return one_child
+    
+    
 
