@@ -20,7 +20,7 @@ class Playdate:
     def add_playdate(cls,data):
         query = """
             INSERT INTO playdate (date, location, host, created_at, updated_at) 
-            VALUE (%(date)s,%(location)s, %(host)s, NOW(), NOW());
+            VALUE (%(date)s, %(location)s, %(host)s, NOW(), NOW());
         """
         results = connectToMySQL(DB).query_db(query,data)
         return results

@@ -19,14 +19,19 @@ def add_playdate():
     #     }
     #     Child.add_child(data)
         # return {'status': 'success'}
+    data1 ={
+        "child_id": request.form['child_id'],
+        "id": session['id']
+    }
+    if not Child.get_child_by_user_and_childId(data1):
+        return {'status': 'fail', 'reason': 'invalid'},400
     data = {
-        # 'user_id': session['id'],
         "date" : request.form['date'],
         "location" : request.form['location'],
         "information" : request.form['information'],
         "dress_code" : request.form['dress_code'],
         "playdate_type" : request.form['playdate_type'],
-        "host" : request.form['host']
+        "host" : session['child_id']
         }
     Playdate.add_playdate(data)
     return {'status': 'success'}
